@@ -50,3 +50,8 @@ This first iteration of the project is supposed to be cheap, extendable, and ser
     - Data model consumed by the opportunity
 
 
+### Structure
+
+1. The [structure of a new django project](https://docs.djangoproject.com/en/1.11/intro/tutorial01/#creating-a-project)
+    - This guide also recommends not storing python code in the document root. Since Python is rendering this stuff anyways, it makes sense (nothing in the project directory is used by apache). What about static assets???  Those are served by Python too right? Unless we use a CDN or other static asset server.
+    - Explore if static assets are impacted by removing this python code from the web root. A symlink to the static assets folder may be one route to simply managing this.
