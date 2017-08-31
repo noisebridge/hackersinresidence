@@ -1,6 +1,14 @@
 ## Hackers In Residence: https://www.hackersinresidence.org
 
 
+
+### Deployment
+
+1. Templates
+    - Update `robots.txt` on the deployed instance.
+    - Fix the browserconfig.xml or whatever, I think it's for microsoft mobile stuff. It needs some tile static assets.
+
+
 ### Guidelines
 
 This first iteration of the project is supposed to be cheap, extendable, and serviceable. I have a lot of latitude in order to ensure the cost is low and the project is hackable. Ideally volunteers will take over when I finish.

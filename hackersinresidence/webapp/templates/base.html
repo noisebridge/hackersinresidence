@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+<html> 
+
+  <head>
+  <title> 
+    {% block title %}Hackers In Residence{% endblock title %}
+    - Hackers In Residence
+  </title>
+
+  {% block inlinecss %}
+  {% endblock inlinecss %}
+  
+  {% block head %}
+    {% include "sections/head.html" %}
+  {% endblock head %}
+  </head>
+
+  {% block body %}
+    <body>
+
+    {% block header %}
+      {% include "sections/header.html" %}
+    {% endblock header %}
+
+    {# the 'main' block is the primary place to display content #}
+    {% block main %}
+      {# some default content could go here #}
+    {% endblock main %}
+
+    {% block footer %}
+      {% include "sections/footer.html" %}
+    {% endblock footer %}
+
+    {# reminder, many privacy oriented people do not use javascript; avoid javascript! #}
+    {% block footerjs %}
+    {% include "sections/footerjs.html" %}
+    {% endblock footerjs %}
+
+    {# put inline javascript in this block.#}
+    {# jQuery and other modules are loaded in footerjs #}
+    {# which is before this! #}
+    {% block inlinejs %}
+    {% endblock inlinejs %}
+
+    </body>
+  {% endblock body %}
+
+</html>

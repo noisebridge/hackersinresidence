@@ -6,6 +6,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    ''' test view
+    ''' Homepage
     '''
-    return HttpResponse("Test view")
+    return render(request, 'pages/index.html')
+
+def opportunities(request):
+    ''' Opportunities
+    '''
+    return render(request, 'pages/opportunities.html')
