@@ -7,6 +7,12 @@
 1. Templates
     - Update `robots.txt` on the deployed instance.
     - Fix the browserconfig.xml or whatever, I think it's for microsoft mobile stuff. It needs some tile static assets.
+1. Static Files
+    - django.contrib.staticfiles deploys static files on dev only
+    - look at trestl to see how static files are deployed there (apache config?)
+    - [django staticfiles deploy howto](https://docs.djangoproject.com/en/1.11/howto/static-files/deployment/)
+1. `site-packages`
+    - in trestl-django this is symlinked from the project root to `venv/lib/python2.7/site-packages/`
 
 
 ### Guidelines
