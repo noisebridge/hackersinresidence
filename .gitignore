@@ -2,3 +2,5 @@
 *.pyc
 *.swp
 venv
+/static
+hackersinresidence/db.sqlite3

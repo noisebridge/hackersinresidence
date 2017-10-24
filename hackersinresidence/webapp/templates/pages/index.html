@@ -14,6 +14,11 @@
     width: 100%;
     height: auto;
   }
+  .home-banner-crop {
+    max-height: 500px;
+    overflow: hidden;
+  }
+
   
 </style>
 {% endblock inlinecss %} 
@@ -24,7 +29,9 @@
   <div class="row home-row">
 
     <div class="col-sm-12 home-fullwidth">
-      <img src="/static/dist/images/image.jpg" \>
+      <div class="home-banner-crop">
+        <img class="home-banner" src="{% static "images/noisebridge_front_entrance.jpg" %}" \>
+      </div>
 
       <div id="welcomeOverlay">
         <h3 id="welcomeText">Welcome</h3>
