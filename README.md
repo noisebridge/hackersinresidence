@@ -13,6 +13,10 @@
     - [django staticfiles deploy howto](https://docs.djangoproject.com/en/1.11/howto/static-files/deployment/)
 1. `site-packages`
     - in trestl-django this is symlinked from the project root to `venv/lib/python2.7/site-packages/`
+1. Database - sqlite
+    - initial deployment will be using sqlite to reduce management overhead
+    - migration to postgres could be done manually in the future if the site has highly concurrent database transactions, under the current submission model we will likely have < 10 transactions per DAY. 
+    - there are utilities for converting between sqlite->postgres and models might need updated
 
 
 ### Guidelines
