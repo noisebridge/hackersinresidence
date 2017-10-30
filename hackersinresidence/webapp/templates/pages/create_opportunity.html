@@ -28,17 +28,6 @@
 
   <div class="row home-row">
 
-	{# this works but should use bootstrap flash message #}
-	{% if messages %}
-	<ul class="messages">
-		{% for message in messages %}
-		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-      {{ message }}
-		</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
     <div class="col-sm-12 home-fullwidth">
       <div class="home-banner-crop">
         <img class="home-banner" src="{% static "images/noisebridge_front_entrance.jpg" %}" \>

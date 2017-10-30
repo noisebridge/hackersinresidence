@@ -23,6 +23,10 @@
       {% include "sections/header.html" %}
     {% endblock header %}
 
+    {% block messages %}
+      {% include "sections/messages.html" %}
+    {% endblock messages %}
+
     {# the 'main' block is the primary place to display content #}
     {% block main %}
       {# some default content could go here #}
