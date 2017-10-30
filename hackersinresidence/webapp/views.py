@@ -21,8 +21,10 @@ def opportunities(request):
     return render(request, 'pages/opportunities.html')
 
 
-def view_opportunity(request):
+def view_opportunity(request, opportunity_id):
     ''' show a single opportunity view
+
+    The route for this view is: /opportunity/
 
     Components of this view are  used for admin to review an opportunity
     It is possible this view will just be totally recycled but linked from 
@@ -33,9 +35,10 @@ def view_opportunity(request):
     I think I have written some stuff on managing opportunity state in the past
     Look this stuff up, states like: under_review, approved, expired, spam
     '''
+    opportunity = Opportunity.objects.get(pk=opportunity_id)
 
     # will need to pass the opportunity in to be filled in the template
-    return render(request, 'pages/view_opportunity.html')
+    return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity})
 
 
 def create_opportunity(request):
