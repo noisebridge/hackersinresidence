@@ -68,6 +68,11 @@ This first iteration of the project is supposed to be cheap, extendable, and ser
     - Data model consumed by the opportunity
 
 
+#### Deploying a mail in a view on form submission
+
+- [more info](https://docs.djangoproject.com/en/1.11/topics/forms/#field-data)
+
+
 #### Flash Messages
 
 - [more info](https://docs.djangoproject.com/en/1.11/ref/contrib/messages/)
