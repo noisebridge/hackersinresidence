@@ -2,6 +2,13 @@
 
 
 
+### Next Actions
+
+- set up the user system following the template from previous django projects
+- write the relationship from opportunity to user and write the filtered opportunity_list view so a user can see their opportunities
+- write the opportunity edit view
+
+
 ### Deployment
 
 1. Templates
