@@ -15,10 +15,18 @@ def index(request):
     return render(request, 'pages/index.html')
 
 def opportunities(request):
-    ''' View opportunities
-    '''
+    ''' View list of opportunities
 
-    return render(request, 'pages/opportunities.html')
+    Two functions:
+    1. show a filterable list of opportunities
+    2. show a user their opportunities (filter by them) with an edit button
+        - should accept optional argument of user id or something
+        - when the user logs in they should be redirected to this page
+        - there should be a login link on the homepage
+    '''
+    opportunity_list = Opportunity.objects.all()
+
+    return render(request, 'pages/opportunities.html', {'opportunity_list': opportunity_list})
 
 
 def view_opportunity(request, opportunity_id):
