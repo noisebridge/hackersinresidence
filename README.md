@@ -7,6 +7,16 @@
 - set up the user system following the template from previous django projects
 - write the relationship from opportunity to user and write the filtered opportunity_list view so a user can see their opportunities
 - write the opportunity edit view
+- write an organization info submit form and an approval form for this
+- write an organization 'view organization' template
+  - this will actually go in the 'view opportunity page right? but same concept so we could have both...
+
+
+### not in scope, the organizations are all just available by clicking into the opportunity
+
+- write a thing to display all the 'organizations' - the users
+    - could be a 'panel view' with a photo taking the top half, a title, and a short description.  
+    - then people could go to /organizations and browse the panel view
 
 
 ### Deployment
