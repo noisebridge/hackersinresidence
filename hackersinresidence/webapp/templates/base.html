@@ -19,13 +19,13 @@
   {% block body %}
     <body>
 
-    {% block header %}
-      {% include "sections/header.html" %}
-    {% endblock header %}
-
     {% block messages %}
       {% include "sections/messages.html" %}
     {% endblock messages %}
+
+    {% block header %}
+      {% include "sections/header.html" %}
+    {% endblock header %}
 
     {# the 'main' block is the primary place to display content #}
     {% block main %}
