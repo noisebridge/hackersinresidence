@@ -14,7 +14,8 @@
 
 ### not in scope, the organizations are all just available by clicking into the opportunity
 
-- write a thing to display all the 'organizations' - the users
+
+- write a thing to display all the 'organizations' - the users (try to just get a simple one done with title and hyperlink in a ul/li structure)
     - could be a 'panel view' with a photo taking the top half, a title, and a short description.  
     - then people could go to /organizations and browse the panel view
 
