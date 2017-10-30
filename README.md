@@ -68,6 +68,10 @@ This first iteration of the project is supposed to be cheap, extendable, and ser
     - Data model consumed by the opportunity
 
 
+#### Flash Messages
+
+- [more info](https://docs.djangoproject.com/en/1.11/ref/contrib/messages/)
+
 ### Structure
 
 1. [structure of a new django project](https://docs.djangoproject.com/en/1.11/intro/tutorial01/#creating-a-project)
