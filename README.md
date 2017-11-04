@@ -131,6 +131,10 @@ This first iteration of the project is supposed to be cheap, extendable, and ser
     - Allow the organization to un-cancel opportuntities too.
     - Data model consumed by the opportunity
 
+#### accounts templates
+
+The accounts templates are copied from pinax-theme-bootstrap which is MIT licensed.
+
 
 #### Deploying a mail in a view on form submission
 
