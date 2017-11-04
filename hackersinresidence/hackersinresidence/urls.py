@@ -21,4 +21,5 @@ urlpatterns = [
     # only exposed on root path now
     #url(r'^webapp/', include('webapp.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^account/', include('account.urls')),
 ]

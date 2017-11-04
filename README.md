@@ -1,6 +1,21 @@
 ## Hackers In Residence: https://www.hackersinresidence.org
 
 
+### Quick Wins
+
+1. Write the model for org as a 1-1 relationship with a user
+2. Describe the organization on the user's homepage
+    - the user hopepage IS the organization page but has a edit bar that only the user can see
+    - this will need the organization's slug - this is now an easy thing
+        - there is a slugify filter: `from django.template.defaultfilters import slugify`
+        - [utils docs: ctrl+f slugify](https://docs.djangoproject.com/en/1.11/ref/utils/)
+        - set unicode to false, the web still is not set up for this and we don't have an orgs search or index
+    - Have some default values so the user can see how their organization is used
+    - add a button for editing the organization
+    - add a button for adding an opportunity
+3. Write the opportunity list template
+4. Flesh out the opportunity object
+5. Build the image upload form component, add to organization update form
 
 ### Next Actions
 
@@ -22,7 +37,21 @@
 
 Reviewing django-user-accounts - it's basically required to keep the project slim.
 
-- [more info](aticfiles deploy howto](https://docs.djangoproject.com/en/1.11/how    to/static-files)
+Downside: it requires pinax-theme-bootstrap which requires some things:
+    - Bootstrap 3.3.5
+    - Font Awesome 4.4.0
+    - jQuery 2.1.4
+
+##### Pinax Options
+
+1. Install the dependencies
+2. Copy the template files for account from the app and drop them in my templates folder
+    - This requires some retrofitting, ugh.
+
+
+##### Django User Resources
+
+- [more info](saticfiles deploy howto](https://docs.djangoproject.com/en/1.11/how    to/static-files)
     - weak password linting not provided by default, can be form validation?
 - [manage auth](https://docs.djangoproject.com/en/1.11/topics/auth/default/)
     - check logged in, permission required, etc

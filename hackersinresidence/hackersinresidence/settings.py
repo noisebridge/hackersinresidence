@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # pinax django-user-accounts dependency
+    'account',
     'webapp',
 ]
 
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MIDDLEWARE_CLASSES = MIDDLEWARE  # this is a MIDDLEWARE alias for pinax django-user-accounts
 
 ROOT_URLCONF = 'hackersinresidence.urls'
 
@@ -63,6 +66,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # for the pinax django-user-accounts app (includes 4 above reqs)
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'account.context_processors.account',
             ],
         },
     },
