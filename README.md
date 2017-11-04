@@ -10,6 +10,23 @@
 - write an organization info submit form and an approval form for this
 - write an organization 'view organization' template
   - this will actually go in the 'view opportunity page right? but same concept so we could have both...
+- if users create organizations they are going to want to share permissions
+  - ideally we won't offer this but dont want to imply they can do it
+  - better to make user == org?
+  - how easy to add metadata to User object?
+    - option: one-to-one relationship between organization model and user
+        - form only affects that user's organization
+
+
+#### Django User 
+
+Reviewing django-user-accounts - it's basically required to keep the project slim.
+
+- [more info](aticfiles deploy howto](https://docs.djangoproject.com/en/1.11/how    to/static-files)
+    - weak password linting not provided by default, can be form validation?
+- [manage auth](https://docs.djangoproject.com/en/1.11/topics/auth/default/)
+    - check logged in, permission required, etc
+    - will need this to show a user their entries?
 
 
 ### not in scope, the organizations are all just available by clicking into the opportunity
