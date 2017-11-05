@@ -1,11 +1,17 @@
-{% extends "site_base.html" %}
+
+{# from: default content page #}
+{# great for styling a simple section of content #}
+{% extends "default.html" %}
+{% load staticfiles %}
+
+{% block title %}Login{% endblock title %}
 
 {% load account_tags %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Log in" %}{% endblock %}
+{# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
+{% block defaultpage %}
 
-{% block body %}
     <div class="row">
         <div class="col-md-4">
             <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
@@ -30,7 +36,8 @@
             {% include "account/_login_sidebar.html" %}
         </div>
     </div>
-{% endblock %}
+{% endblock defaultpage %}
+
 
 {% block scripts %}
     {{ block.super }}
@@ -40,3 +47,4 @@
         });
     </script>
 {% endblock %}
+
