@@ -1,6 +1,10 @@
 {# default page #}
 {% extends "base.html" %}
 
+{# remember this does not carry from an 'extends' #}
+{# for this reason this does nothing for its child templates #}
+{# this template is never directly used so it doesn't use 'load staticfiles' #}
+{# the future is mysterious, so I have left it #}
 {% load staticfiles %}
 
 {# pages using this default page SHOULD add their own title. #}
