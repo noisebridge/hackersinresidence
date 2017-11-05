@@ -14,6 +14,18 @@ def index(request):
     '''
     return render(request, 'pages/index.html')
 
+
+def lipsum(request):
+    ''' Default page template... simple demo of full column
+
+    This should continue to exist, but should be fleshed out with 
+    a major demo of the bootstrap grid and various capabilities.
+
+    If there is javascript, it can show all those features too.
+    '''
+    return render(request, 'pages/lipsum.html')
+
+
 def opportunities(request):
     ''' View list of opportunities
 

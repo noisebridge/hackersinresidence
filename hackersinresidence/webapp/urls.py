@@ -8,4 +8,5 @@ urlpatterns = [
     # ?P regex extension available in re docs: https://docs.python.org/2/library/re.html
     url(r'^opportunity/(?P<opportunity_id>[0-9]+)/$', views.view_opportunity, name='view_opportunity'),
     url(r'^create_opportunity', views.create_opportunity, name='create_opportunity'),
+    url(r'^lipsum', views.lipsum, name='lipsum')
 ]

@@ -1,0 +1,23 @@
+{# default page #}
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{# pages using this default page SHOULD add their own title. #}
+{% block title %}Hackers in Residence{% endblock title %}
+
+{% block main %}
+
+<div class="container default-container">
+  <div class="row">
+    <div class="default-main offset-sm-2 col-sm-8">
+
+      {% block defaultpage %}
+
+      {% endblock defaultpage %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock main %}
