@@ -33,6 +33,11 @@
         - form only affects that user's organization
 
 
+### Little issues
+
+- It seems to be taking css from the webapp app, not the collectstatic dist path
+
+
 #### Django User 
 
 Reviewing django-user-accounts - it's basically required to keep the project slim.
