@@ -98,3 +98,31 @@ def create_opportunity(request):
         form = OpportunityForm()
 
     return render(request, 'pages/create_opportunity.html', {'form': form})
+
+
+def update_organization(request):
+    ''' Update an organization via a form
+
+    This view should be used to update an existing organization.
+    The user will PROBABLY have an associated organization on account creation.
+
+    Since this updates an org it will need to grab info for the specific
+    object represented by the user going to the update org page.
+
+    The update org page will be a link on the user's landing page.
+
+    User landing page has link to: create_opportunity, update_organization
+    User landing page also has a list of opportunities.
+    Additionally they will need a delete button which links to a delete
+    opportunity page which only has a confirmation button and only
+    works for that user.
+
+    Org fields come from the model.
+    This will also need to manage processing an image.
+    When an organization model is updated, it needs to be approved by admins.
+    This email may fire from the view, or use some hook...
+
+    FUTURE:
+    - Ideally this can be recycled to create an organization, but currently a single account manages a single organization.
+    '''
+    pass
