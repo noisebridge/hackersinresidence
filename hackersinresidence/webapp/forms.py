@@ -9,5 +9,9 @@ class OpportunityForm(forms.ModelForm):
     '''
     class Meta:
         model = Opportunity
-        fields = ['title', 'description']
-
+        fields = ['title', 'description', 'expiration_date']
+        widgets = {
+                'title': forms.TextInput(attrs={'class': 'form-control'}),
+                'description': forms.Textarea(attrs={'class': 'form-control'}),
+                'expiration_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+                }
