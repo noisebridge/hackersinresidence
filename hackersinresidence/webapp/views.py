@@ -58,9 +58,10 @@ def view_opportunity(request, opportunity_id):
     Look this stuff up, states like: under_review, approved, expired, spam
     '''
     opportunity = Opportunity.objects.get(pk=opportunity_id)
+    organization = Organization.objects.get(pk=opportunity.org_owner)
 
     # will need to pass the opportunity in to be filled in the template
-    return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity})
+    return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity, 'organization': organization})
 
 
 def create_opportunity(request):
@@ -135,7 +136,8 @@ def update_organization(request):
     if request.method == 'POST':
         # necessary to populate organization relationship field based on the user's org.
         # use user.opportunity foreign key to populate relationship
-        form = OrganizationForm(request.POST, request.FILES)
+        user_organization, created = Organization.objects.get_or_create(user_owner=request.user)
+        form = OrganizationForm(request.POST, request.FILES, instance=user_organization)
         if form.is_valid():
             messages.success(request, 'Success! Organization submitted for review.')
             form.save()
@@ -144,6 +146,7 @@ def update_organization(request):
     
     # not POST
     else:
-        form = OrganizationForm()
+        user_organization, created = Organization.objects.get_or_create(user_owner=request.user)
+        form = OrganizationForm(instance=user_organization)
 
     return render(request, 'pages/update_organization.html', {'form': form})
