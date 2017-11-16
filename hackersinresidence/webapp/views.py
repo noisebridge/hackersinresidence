@@ -6,8 +6,10 @@ from django.http import HttpResponseRedirect
 
 from django.contrib import messages
 
-from .models import Opportunity
-from .forms import OpportunityForm
+from .models import Opportunity, Organization
+from .forms import OpportunityForm, OrganizationForm
+
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 def index(request):
     ''' Homepage
@@ -86,6 +88,8 @@ def create_opportunity(request):
     '''
 
     if request.method == 'POST':
+        # necessary to populate organization relationship field based on the user's org.
+        # use user.opportunity foreign key to populate relationship
         form = OpportunityForm(request.POST)
         if form.is_valid():
             messages.success(request, 'Success! Opportunity submitted for review.')
@@ -125,4 +129,21 @@ def update_organization(request):
     FUTURE:
     - Ideally this can be recycled to create an organization, but currently a single account manages a single organization.
     '''
-    pass
+
+    # copied/updated from opportunity - make sure to grab the model for the org
+    # from the user's organization
+    if request.method == 'POST':
+        # necessary to populate organization relationship field based on the user's org.
+        # use user.opportunity foreign key to populate relationship
+        form = OrganizationForm(request.POST, request.FILES)
+        if form.is_valid():
+            messages.success(request, 'Success! Organization submitted for review.')
+            form.save()
+
+        # if POST and not valid, drop back to regular view
+    
+    # not POST
+    else:
+        form = OrganizationForm()
+
+    return render(request, 'pages/update_organization.html', {'form': form})

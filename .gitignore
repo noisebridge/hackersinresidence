@@ -3,4 +3,5 @@
 *.swp
 venv
 /static
+/media
 hackersinresidence/db.sqlite3
