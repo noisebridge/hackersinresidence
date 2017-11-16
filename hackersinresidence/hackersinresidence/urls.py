@@ -16,10 +16,17 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+# for redirects
+from django.views.generic import RedirectView
+
 urlpatterns = [
     url(r'^', include('webapp.urls')),
     # only exposed on root path now
     #url(r'^webapp/', include('webapp.urls')),
     url(r'^admin/', admin.site.urls),
+    # is this the best way to override admin.site.urls?
+    # /admin/ when logged out should probably redirect to /admin/login/
+    url(r'^admin/login$', RedirectView.as_view(pattern_name='admin-login', permanent=True)),
+    # when you sign up, the post fails... is this complete? check pinax docs
     url(r'^account/', include('account.urls')),
 ]
