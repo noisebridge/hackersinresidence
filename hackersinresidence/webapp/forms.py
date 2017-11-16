@@ -14,6 +14,7 @@ class OpportunityForm(forms.ModelForm):
                 'title': forms.TextInput(attrs={'class': 'form-control'}),
                 'description': forms.Textarea(attrs={'class': 'form-control'}),
                 'expiration_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+                'location' : forms.TextInput(attrs={'class': 'form-control'}),
                 }
 
 class OrganizationForm(forms.ModelForm):

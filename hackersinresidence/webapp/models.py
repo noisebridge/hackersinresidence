@@ -35,6 +35,7 @@ class Organization(models.Model):
     # but do not code feature into ux components - leave possibility open
     # this cascades by default, but I put it so it is explicit
     user_owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+
     title = models.CharField(max_length=256, blank=False, null=True)
     long_description = models.TextField(null=True)
     link_to_organization = models.TextField(null=True)
@@ -42,7 +43,7 @@ class Organization(models.Model):
     location_country = models.TextField(null=True)
 
     # upload_to yields instance, filename, see implementation above
-    organization_banner = models.FileField(upload_to=user_directory_path, default=None)
+    organization_banner = models.ImageField(upload_to=user_directory_path, default=None)
 
 
 class Opportunity(models.Model):
@@ -58,14 +59,18 @@ class Opportunity(models.Model):
         - expiration date
         - organization
     '''
+    class Meta:
+        verbose_name_plural = 'Opportunities'
+
     # make a organization relationship, orgs should be users
-    #orgaization = 
+    #organization =  models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
+
     # this cascades by default, but I put it so it is explicit
     org_owner = models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=256, blank=False, null=True)
     description = models.TextField(null=True)
+    location = models.TextField(null=True)
     expiration_date = models.DateField(null=True) 
-
 
 
 
