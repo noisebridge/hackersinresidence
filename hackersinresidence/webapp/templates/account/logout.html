@@ -1,10 +1,15 @@
-{% extends "site_base.html" %}
+{# from: default content page #}
+{# great for styling a simple section of content #}
+{% extends "default.html" %}
+{% load staticfiles %}
 
+{% block title %}logout{% endblock title %}
+
+{% load account_tags %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Log out" %}{% endblock %}
-
-{% block body %}
+{# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
+{% block defaultpage %}
     <div class="row">
         <div class="col-md-5">
             <form method="POST" action="{% url "account_logout" %}">

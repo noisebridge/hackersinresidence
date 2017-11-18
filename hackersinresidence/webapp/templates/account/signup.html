@@ -1,11 +1,16 @@
-{% extends "site_base.html" %}
+
+{# from: default content page #}
+{# great for styling a simple section of content #}
+{% extends "default.html" %}
+{% load staticfiles %}
+
+{% block title %}signup{% endblock title %}
 
 {% load account_tags %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign up" %}{% endblock %}
-
-{% block body %}
+{# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
+{% block defaultpage %}
     <div class="row">
         <div class="col-md-4">
             <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
