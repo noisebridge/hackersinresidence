@@ -150,3 +150,11 @@ def update_organization(request):
         form = OrganizationForm(instance=user_organization)
 
     return render(request, 'pages/update_organization.html', {'form': form})
+
+def view_organization(request):
+    ''' View an organization's information
+    '''
+    # should also pull the user from the url if present in the url
+    organization, created = Organization.objects.get_or_create(user_owner=request.user)
+
+    return render(request, 'pages/view_organization.html', { 'organization' : organization })

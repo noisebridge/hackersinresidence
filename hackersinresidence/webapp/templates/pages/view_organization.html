@@ -1,0 +1,18 @@
+{# from: default content page #}
+{# great for styling a simple section of content #}
+{% extends "default-content.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ organization.title }}{% endblock title %}
+
+{# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
+{% block defaultpage %}
+
+  <h3>{{ organization.title }}</h3>
+  {{ organization.location_city }}, {{ organization.location_country }} 
+  <br>
+  <img src="/media/{{ organization.organization_banner }}">
+  <br> 
+  {{ organization.long_description | linebreaks }}
+
+{% endblock defaultpage %}

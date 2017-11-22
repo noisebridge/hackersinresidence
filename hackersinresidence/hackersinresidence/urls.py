@@ -19,6 +19,10 @@ from django.contrib import admin
 # for redirects
 from django.views.generic import RedirectView
 
+# for static media in dev
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     url(r'^', include('webapp.urls')),
     # only exposed on root path now
@@ -29,4 +33,5 @@ urlpatterns = [
     url(r'^admin/login$', RedirectView.as_view(pattern_name='admin-login', permanent=True)),
     # when you sign up, the post fails... is this complete? check pinax docs
     url(r'^account/', include('account.urls')),
-]
+    # for static media in dev
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

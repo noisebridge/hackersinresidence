@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^opportunity/(?P<opportunity_id>[0-9]+)/$', views.view_opportunity, name='view_opportunity'),
     url(r'^create_opportunity/$', views.create_opportunity, name='create_opportunity'),
     url(r'^update_organization/$', views.update_organization, name='update_organization'),
-    url(r'^lipsum/$', views.lipsum, name='lipsum')
+    url(r'^lipsum/$', views.lipsum, name='lipsum'),
+    url(r'^org/$', views.view_organization, name='view_organization'),
 ]
