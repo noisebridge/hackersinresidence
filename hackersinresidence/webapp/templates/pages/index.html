@@ -29,29 +29,29 @@
   <div class="row home-row">
 
     <div class="col-sm-12 home-fullwidth">
+      
       <div class="home-banner-crop">
         <img class="home-banner" src="{% static "images/noisebridge_front_entrance.jpg" %}" \>
       </div>
 
-      <div id="welcomeOverlay">
-        <h3 id="welcomeText">Welcome</h3>
-        <a href="#" class="sharp" role="button">Button1</a>
-        <a href="#" class="sharp" role="button">Button2</a>
+      <div class="container default-container">
+        <div class="row">
+          <div class="default-main offset-sm-1 col-sm-10">
+
+            {% block defaultpage %}
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            {% endblock defaultpage %}
+
+          </div>
+        </div>
       </div>
 
     </div>
-
   </div>
   
-  <div class="col-sm-12 home-fullwidth">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
 
 </div>
-
-<!-- why was this extra div here with container marked on it? does it belong in the footer or is it extra?
-</div>
--->
-<!-- /container -->
 
 {% endblock main %}
