@@ -41,8 +41,8 @@ class Organization(models.Model):
     link_to_organization = models.TextField(null=True)
     location_city = models.TextField(null=True)
     location_country = models.TextField(null=True)
-
-    # upload_to yields instance, filename, see implementation above
+    slug = models.SlugField(unique=True, allow_unicode=True)
+    # see user_directory_path function above, upload_to calls this with (instance, filename)
     organization_banner = models.ImageField(upload_to=user_directory_path, default=None)
 
 
@@ -69,7 +69,6 @@ class Opportunity(models.Model):
     org_owner = models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=256, blank=False, null=True)
     description = models.TextField(null=True)
-    location = models.TextField(null=True)
     expiration_date = models.DateField(null=True) 
 
 
