@@ -63,13 +63,11 @@ def opportunities(request):
 
     opportunity_display_list = list()
     for opportunity in opportunities:
-        #org = Organization.objects.get(id=str(4))
-        #org = Organization.objects.get(id=str(opportunity.org_owner.id))
+        opportunity_link = "/opportunity/{}".format(opportunity.id)
         org = opportunity.org_owner
-        print org
         org_title = org.title
         org_location = '{city} {country}'.format(city=org.location_city, country=org.location_country)
-        opportunity_display = { 'title' : opportunity.title, 'description' : opportunity.description, 'org_title' : org_title, 'org_location' : org_location }
+        opportunity_display = { 'title' : opportunity.title, 'description' : opportunity.description, 'org_title' : org_title, 'org_location' : org_location, 'expiration' : opportunity.expiration_date, 'link': opportunity_link }
         opportunity_display_list.append(opportunity_display)
 
     return render(request, 'pages/opportunities.html', {'opportunity_display_list': opportunity_display_list })
@@ -90,8 +88,7 @@ def view_opportunity(request, opportunity_id):
     Look this stuff up, states like: under_review, approved, expired, spam
     '''
     opportunity = Opportunity.objects.get(pk=opportunity_id)
-    #organization = Organization.objects.get(pk=opportunity.org_owner)
-    organization = None
+    organization = opportunity.org_owner
 
     # will need to pass the opportunity in to be filled in the template
     return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity, 'organization': organization})

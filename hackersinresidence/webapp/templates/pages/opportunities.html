@@ -28,53 +28,54 @@
 </style>
 {% endblock inlinecss %} 
 
-{% block title %}Hackers in Residence{% endblock title %}
+{% block title %}Opportunities{% endblock title %}
 
 {# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
 {% block defaultpage %}
 
   <div class="row first-content">
     <div class="col-sm-12">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p>This is a list of opportunities, there is currently no filtering or sorting enabled:
+      <p>Apply by clicking into the opportunity page and contacting the organization.
     </div>
   </div>
 
-  <p>{{ organization_dict }}
   <div class="row view-opportunity-header">
     <div class="col-sm-3 text-left">
       <h5>Opportunity</h5>
     </div>
-    <div class="col-sm-4 text-left">
+    <div class="col-sm-3 text-left">
       <h5>Description</h5>
     </div>
-    <div class="col-sm-3 text-left">
+    <div class="col-sm-2 text-left">
       <h5>Organization</h5>
     </div>
     <div class="col-sm-2 text-left">
       <h5>Location</h5>
     </div>
+    <div class="col-sm-2 text-left">
+      <h5>Expiration</h5>
+    </div>
   </div>
   {% for opportunity in opportunity_display_list %}
   <div class="row view-opportunity">
     <div class="col-sm-3 text-left">
-      {{ opportunity.title }}
-    </div>
-    <div class="col-sm-4 text-left">
-      {{ opportunity.description }}
+      <a href="{{ opportunity.link }}">{{ opportunity.title }}</a>
     </div>
     <div class="col-sm-3 text-left">
+      {{ opportunity.description }}
+    </div>
+    <div class="col-sm-2 text-left">
       {{ opportunity.org_title }}
     </div>
     <div class="col-sm-2 text-left">
       {{ opportunity.org_location }}
     </div>
+    <div class="col-sm-2 text-left">
+      {{ opportunity.expiration }}
+    </div>
   </div>
   {% endfor %}
 
-  <div class="row second-content">
-    <div class="col-sm-12">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </div>
-  </div>
 
 {% endblock defaultpage %}
