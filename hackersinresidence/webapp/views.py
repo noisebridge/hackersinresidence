@@ -11,6 +11,7 @@ from .forms import OpportunityForm, OrganizationForm
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
+
 def index(request):
     ''' Homepage
     '''
@@ -58,9 +59,20 @@ def opportunities(request):
         - when the user logs in they should be redirected to this page
         - there should be a login link on the homepage
     '''
-    opportunity_list = Opportunity.objects.all()
+    opportunities = Opportunity.objects.all()
 
-    return render(request, 'pages/opportunities.html', {'opportunity_list': opportunity_list})
+    opportunity_display_list = list()
+    for opportunity in opportunities:
+        #org = Organization.objects.get(id=str(4))
+        #org = Organization.objects.get(id=str(opportunity.org_owner.id))
+        org = opportunity.org_owner
+        print org
+        org_title = org.title
+        org_location = '{city} {country}'.format(city=org.location_city, country=org.location_country)
+        opportunity_display = { 'title' : opportunity.title, 'description' : opportunity.description, 'org_title' : org_title, 'org_location' : org_location }
+        opportunity_display_list.append(opportunity_display)
+
+    return render(request, 'pages/opportunities.html', {'opportunity_display_list': opportunity_display_list })
 
 
 def view_opportunity(request, opportunity_id):
@@ -78,7 +90,8 @@ def view_opportunity(request, opportunity_id):
     Look this stuff up, states like: under_review, approved, expired, spam
     '''
     opportunity = Opportunity.objects.get(pk=opportunity_id)
-    organization = Organization.objects.get(pk=opportunity.org_owner)
+    #organization = Organization.objects.get(pk=opportunity.org_owner)
+    organization = None
 
     # will need to pass the opportunity in to be filled in the template
     return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity, 'organization': organization})
@@ -111,7 +124,17 @@ def create_opportunity(request):
     if request.method == 'POST':
         # necessary to populate organization relationship field based on the user's org.
         # use user.opportunity foreign key to populate relationship
-        form = OpportunityForm(request.POST)
+
+        # user can technically make opportunities before finishing their registration... 
+        # this can be prevented in validation or something
+        # created - not used yet
+        org, created = Organization.objects.get_or_create(user_owner=request.user)
+
+        # we can do a get_or_create() instead here to use this for editing objects
+        # we just have to supply the primary key that we want to edit
+        opportunity = Opportunity.objects.create(org_owner=org)
+
+        form = OpportunityForm(request.POST, instance=opportunity)
         if form.is_valid():
             messages.success(request, 'Success! Opportunity submitted for review.')
             form.save()

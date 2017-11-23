@@ -39,33 +39,34 @@
     </div>
   </div>
 
+  <p>{{ organization_dict }}
   <div class="row view-opportunity-header">
-    <div class="col-sm-3">
+    <div class="col-sm-3 text-left">
       <h5>Opportunity</h5>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4 text-left">
       <h5>Description</h5>
     </div>
-    <div class="col-sm-3">
-      <h5>Location</h5>
-    </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 text-left">
       <h5>Organization</h5>
     </div>
+    <div class="col-sm-2 text-left">
+      <h5>Location</h5>
+    </div>
   </div>
-  {% for opportunity in opportunity_list %}
+  {% for opportunity in opportunity_display_list %}
   <div class="row view-opportunity">
-    <div class="col-sm-3">
+    <div class="col-sm-3 text-left">
       {{ opportunity.title }}
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4 text-left">
       {{ opportunity.description }}
     </div>
-    <div class="col-sm-3">
-      {{ opportunity.location }}
+    <div class="col-sm-3 text-left">
+      {{ opportunity.org_title }}
     </div>
-    <div class="col-sm-3">
-      {{ organization.title }}
+    <div class="col-sm-2 text-left">
+      {{ opportunity.org_location }}
     </div>
   </div>
   {% endfor %}
