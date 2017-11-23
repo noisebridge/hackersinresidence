@@ -5,11 +5,11 @@
 <![endif]-->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Hackers in Residence</a>
-  {# <a class="pull-left header-logo" href="/">Hackers in Residence<img src="{% static "images/logo.svg" %}" \></a> #}
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  {# <a class="navbar-brand" href="/">Hackers in Residence</a> #}
+  <a class="pull-left header-logo" href="/"><img src="{% static "images/logo.png" %}" \></a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> -->
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <!--
@@ -20,7 +20,29 @@
       <li class="nav-item active">
         <a class="nav-link" href="/opportunities/">View Opportunities</a>
       </li>
+      <li class="nav-item active">
+        {% if user.is_authenticated %}
+          <a class="nav-link" href="/org/">My Organization</a>
+        {% else %}
+          <a class="nav-link" href="/account/login/">My Organization</a>
+        {% endif %}
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/create/">Create Opportunity</a>
+      </li>
+      {% endif %}
     </ul>
+  <div class="collapse navbar-collapse navbar-right-section" id="navbarNavDropdown">
+    <div class="navbar-nav pull-right">
+      <span class="active">
+        {% if user.is_authenticated %}
+          <a class="nav-link" href="/account/logout/">Logout</a>
+        {% else %}
+          <a class="nav-link" href="/account/login/">Login</a>
+        {% endif %}
+      </span>
+    </div>
   </div>
 </nav>
 

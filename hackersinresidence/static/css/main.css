@@ -1,12 +1,13 @@
 
 
 
-/* default.html default template section */
-
-.default-container {
+/* header section */
+.header-logo {
+  padding: 0 30px !important;
 }
-.default-main {
-  padding: 30px 0;
+.navbar-right-section {
+  justify-content: flex-end;
+  padding-right: 30px;
 }
 
 
@@ -16,6 +17,15 @@ footer {
 
   color: ivory;
   background-color: #222;
-
-
 }
+
+
+/* default.html default template section */
+
+.default-container {
+}
+.default-main {
+  padding: 30px 0;
+}
+
+
