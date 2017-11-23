@@ -16,6 +16,26 @@ def index(request):
     '''
     return render(request, 'pages/index.html')
 
+def privacy(request):
+    ''' Homepage
+    '''
+    return render(request, 'pages/privacy.html')
+
+def terms(request):
+    ''' Homepage
+    '''
+    return render(request, 'pages/terms.html')
+
+def contact(request):
+    ''' Homepage
+    '''
+    return render(request, 'pages/contact.html')
+
+def bugs(request):
+    ''' Homepage
+    '''
+    return render(request, 'pages/bugs.html')
+
 
 def lipsum(request):
     ''' Default page template... simple demo of full column

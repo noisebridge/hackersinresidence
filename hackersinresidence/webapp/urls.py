@@ -10,5 +10,9 @@ urlpatterns = [
     url(r'^create_opportunity/$', views.create_opportunity, name='create_opportunity'),
     url(r'^update_organization/$', views.update_organization, name='update_organization'),
     url(r'^lipsum/$', views.lipsum, name='lipsum'),
+    url(r'^privacy/$', views.privacy, name='privacy'),
+    url(r'^terms/$', views.terms, name='terms'),
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^bugs/$', views.bugs, name='bugs'),
     url(r'^org/$', views.view_organization, name='view_organization'),
 ]
