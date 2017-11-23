@@ -5,14 +5,31 @@
 
 {% block title %}{{ organization.title }}{% endblock title %}
 
+{% block inlinecss %}
+<style type="text/css">
+  .org-top-container {
+    padding-top: 30px;
+    min-height: 200px;
+  }
+</style>
+{% endblock inlinecss %} 
+
 {# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
 {% block defaultpage %}
 
-  <h3>{{ organization.title }}</h3>
-  {{ organization.location_city }}, {{ organization.location_country }} 
-  <br>
-  <img src="/media/{{ organization.organization_banner }}">
-  <br> 
-  {{ organization.long_description | linebreaks }}
+  <div class="row org-top-container">
+    <div class="col-sm-5">
+      <h3>{{ organization.title }}</h3>
+      <h5>{{ organization.location_city }}, {{ organization.location_country }}</h5>
+    </div>
+    <div class="col-sm-7">
+      <img src="/media/{{ organization.organization_banner }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      {{ organization.long_description | linebreaks }}
+    </div>
+  </div>
 
 {% endblock defaultpage %}
