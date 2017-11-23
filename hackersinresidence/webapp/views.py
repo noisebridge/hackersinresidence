@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 
 from django.contrib import messages
@@ -11,6 +11,10 @@ from .forms import OpportunityForm, OrganizationForm
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
+def view_404(request):
+    ''' Homepage
+    '''
+    return render(request, 'pages/404.html')
 
 def index(request):
     ''' Homepage
@@ -191,11 +195,27 @@ def update_organization(request):
 
     return render(request, 'pages/update_organization.html', {'form': form})
 
-def view_organization(request):
+def view_organization(request, org_slug=None):
     ''' View an organization's information
     '''
     # should also pull the user from the url if present in the url
-    organization, created = Organization.objects.get_or_create(user_owner=request.user)
+    if not org_slug:
+        if request.user.is_authenticated:
+            organization = Organization.objects.filter(user_owner=request.user).first()
+            if organization:
+                # not good to hardcode this
+                return redirect('/org/{}/'.format(organization.slug))
+            else:
+                return redirect('update_organization')
+        # user is not authenticated yet, log them in
+        else:
+            return redirect('/account/login/')
+
+    # if org_slug, get the organization
+    else:
+        organization = get_object_or_404(Organization, slug=org_slug)
+
+    # used to determine whether to show the edit org button in the template
     user_owner = organization.user_owner
 
     return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })

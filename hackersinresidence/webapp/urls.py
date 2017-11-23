@@ -14,5 +14,8 @@ urlpatterns = [
     url(r'^terms/$', views.terms, name='terms'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^bugs/$', views.bugs, name='bugs'),
+    # ideally this is a redirect to user.org
     url(r'^org/$', views.view_organization, name='view_organization'),
+    # https://docs.djangoproject.com/en/1.11/topics/http/urls/#including-other-urlconfs
+    url(r'^org/(?P<org_slug>[\w-]*)/$', views.view_organization, name='view_organization'),
 ]
