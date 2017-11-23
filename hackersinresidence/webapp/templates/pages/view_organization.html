@@ -7,6 +7,9 @@
 
 {% block inlinecss %}
 <style type="text/css">
+  button {
+    cursor: pointer;
+  }
   .org-top-container {
     padding-top: 30px;
     min-height: 200px;
@@ -16,6 +19,19 @@
 
 {# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
 {% block defaultpage %}
+
+  {# no security concern, button link only allows user to mod their org anyways #}
+  {% if user.is_authenticated %}
+    {# only show on user's org page #}
+    {% if user_owner.id == request.user.id %}
+      <div class="row edit-org-bar">
+        <div class="col-sm-12">
+          <a href="/update_org/"><button class="btn btn-info">update organization</button></a>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
 
   <div class="row org-top-container">
     <div class="col-sm-5">

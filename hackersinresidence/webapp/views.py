@@ -196,5 +196,6 @@ def view_organization(request):
     '''
     # should also pull the user from the url if present in the url
     organization, created = Organization.objects.get_or_create(user_owner=request.user)
+    user_owner = organization.user_owner
 
-    return render(request, 'pages/view_organization.html', { 'organization' : organization })
+    return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })
