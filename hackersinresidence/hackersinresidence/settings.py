@@ -25,7 +25,7 @@ SECRET_KEY = 'p7ny2#9z0*cv5fd&w-%79+gs#!6$)_)v++*8)*z8!f14_69%$&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'dev.hackersinresidence.com', u'localhost', u'127.0.0.1']
 
 
 # Application definition
