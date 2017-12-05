@@ -94,6 +94,9 @@ Downside: it requires pinax-theme-bootstrap which requires some things:
     - to delete a Site, unregister it then delete the object
         - [unregister with django.contrib.admin](https://stackoverflow.com/questions/5742279/removing-sites-from-django-admin-page)
         - [delete the object with filter+object's delete() method](https://stackoverflow.com/questions/3805958/how-to-delete-a-record-in-django-models)
+1. Email backend
+    - i used the smtp server shim shell script in this project root for dev (see settings.py on dev)
+    - [django docs](https://docs.djangoproject.com/en/1.11/topics/email/)
 
 
 ### Guidelines
