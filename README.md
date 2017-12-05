@@ -89,8 +89,11 @@ Downside: it requires pinax-theme-bootstrap which requires some things:
 1. Site URL
     - set `ALLOWED_HOSTS = [u'dev.example.com', u'localhost', u'127.0.0.1']`
     - make sure your site is set
-    - [explanation and howto](https://stackoverflow.com/questions/11814060/site-matching-query-does-not-exist)
+    - [explanation and howto](https://stackoverflow.com/questions/11814059/site-matching-query-does-not-exist)
     - [django site docs](https://docs.djangoproject.com/en/1.11/ref/contrib/sites/)
+    - to delete a Site, unregister it then delete the object
+        - [unregister with django.contrib.admin](https://stackoverflow.com/questions/5742279/removing-sites-from-django-admin-page)
+        - [delete the object with filter+object's delete() method](https://stackoverflow.com/questions/3805958/how-to-delete-a-record-in-django-models)
 
 
 ### Guidelines
