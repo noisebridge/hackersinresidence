@@ -25,7 +25,9 @@ SECRET_KEY = 'p7ny2#9z0*cv5fd&w-%79+gs#!6$)_)v++*8)*z8!f14_69%$&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# pinax django-user-accounts requires sites to be intalled
 ALLOWED_HOSTS = [u'dev.hackersinresidence.com', u'localhost', u'127.0.0.1']
+SITE_ID = 2
 
 
 # Application definition
@@ -137,3 +139,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # pinax django-user-accounts settings
 
 
+# dev mail settings (make sure to run the smtp shell script to get emails
+
+# LOCAL EMAIL (use terminal / shell script)
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+# END LOCAL EMAIL SECTION
