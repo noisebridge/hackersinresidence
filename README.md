@@ -86,6 +86,10 @@ Downside: it requires pinax-theme-bootstrap which requires some things:
     - initial deployment will be using sqlite to reduce management overhead
     - migration to postgres could be done manually in the future if the site has highly concurrent database transactions, under the current submission model we will likely have < 10 transactions per DAY. 
     - there are utilities for converting between sqlite->postgres and models might need updated
+1. Site URL
+    - make sure your site is set
+    - [explanation and howto](https://stackoverflow.com/questions/11814060/site-matching-query-does-not-exist)
+    - [django site docs](https://docs.djangoproject.com/en/1.11/ref/contrib/sites/)
 
 
 ### Guidelines
