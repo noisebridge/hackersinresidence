@@ -47,3 +47,8 @@ footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
   font-weight: bold;
   display: block !important;
 }
+
+/* organization page */
+.org-banner {
+  max-width: 100%;
+}
