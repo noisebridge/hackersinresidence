@@ -8,7 +8,7 @@
 {# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
 {% block defaultpage %}
 
-  <p>Update your organization:
+    <h6>Update your organization</h6>
 
     <form action="" method="post" enctype="multipart/form-data">
       <div class="form-group">
@@ -16,6 +16,8 @@
         {{ form }}
       </div>
       <div class="form-group">
+        <p>Supported image types: <b>png, jpg, jpeg, gif</b>
+        <p>
         <input class="btn btn-primary" type="submit" value="Submit" />
       </div>
     </form>

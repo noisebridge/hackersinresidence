@@ -1,7 +1,6 @@
 
-
-
 /* header section */
+
 .header-logo {
   padding: 0 30px !important;
 }
@@ -10,6 +9,8 @@
   padding-right: 30px;
 }
 
+
+/* footer section */
 
 footer {
   padding: 30px;
@@ -29,6 +30,7 @@ footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
   margin-top: -2px;
 }
 
+
 /* default.html default template section */
 
 .default-container {
@@ -38,3 +40,10 @@ footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
 }
 
 
+
+/* bootstrap overrides */
+.form-group > label {
+  margin-top: 16px;
+  font-weight: bold;
+  display: block !important;
+}
