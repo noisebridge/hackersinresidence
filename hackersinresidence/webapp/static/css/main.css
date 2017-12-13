@@ -1,6 +1,9 @@
 
 /* header section */
 
+nav.navbar {
+  padding-bottom: 15px;
+}
 .header-logo {
   padding: 0 30px !important;
 }
