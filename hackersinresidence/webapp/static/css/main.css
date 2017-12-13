@@ -18,6 +18,9 @@ footer {
   color: ivory;
   background-color: #222;
 }
+footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
+  color: ivory;
+}
 
 .cc-logo {
   width: auto;
