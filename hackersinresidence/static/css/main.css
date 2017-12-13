@@ -19,6 +19,12 @@ footer {
   background-color: #222;
 }
 
+.cc-logo {
+  width: auto;
+  height: 22px;
+  margin-right: 3px;
+  margin-top: -2px;
+}
 
 /* default.html default template section */
 

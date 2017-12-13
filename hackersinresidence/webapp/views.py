@@ -12,7 +12,7 @@ from .forms import OpportunityForm, OrganizationForm
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 def view_404(request):
-    ''' Homepage
+    ''' 404 page
     '''
     return render(request, 'pages/404.html')
 
@@ -22,22 +22,22 @@ def index(request):
     return render(request, 'pages/index.html')
 
 def privacy(request):
-    ''' Homepage
+    ''' Privacy Policy 
     '''
     return render(request, 'pages/privacy.html')
 
 def terms(request):
-    ''' Homepage
+    ''' Not used, but exists
     '''
     return render(request, 'pages/terms.html')
 
 def contact(request):
-    ''' Homepage
+    ''' Not used, but exists
     '''
     return render(request, 'pages/contact.html')
 
 def bugs(request):
-    ''' Homepage
+    ''' Not used, but exists
     '''
     return render(request, 'pages/bugs.html')
 
