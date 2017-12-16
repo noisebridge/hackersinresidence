@@ -11,6 +11,10 @@ nav.navbar {
   justify-content: flex-end;
   padding-right: 30px;
 }
+.header-donate-button {
+  margin: 0 20px;
+  cursor: pointer;
+}
 
 
 /* footer section */
