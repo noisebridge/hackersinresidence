@@ -68,6 +68,10 @@ class OpportunityForm(forms.ModelForm):
 
                 'require_other_requirements': forms.Textarea(attrs={'class': 'form-control'}),
                 }
+        # use regex to copy the dict keys above and add manual titles
+        labels = {
+                'title': ('Opportunity Title')
+                }
 
 class OrganizationForm(forms.ModelForm):
     ''' Django form describing the Opportunity model
