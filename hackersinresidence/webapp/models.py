@@ -68,8 +68,58 @@ class Opportunity(models.Model):
     # this cascades by default, but I put it so it is explicit
     org_owner = models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=256, blank=False, null=True)
-    description = models.TextField(null=True)
-    expiration_date = models.DateField(null=True) 
+    description = models.TextField(blank=True, null=True)
+    expiration_date = models.DateField(blank=True, null=True) 
+ 
+    ##############
+    # below sections are pasted directly from Rich
+    ##############
 
+    
+    offer_travel_checkbox = models.BooleanField(default=False)
+    offer_travel_detail = models.CharField(max_length=256, blank=True, null=True)
 
+    offer_housing_checkbox = models.BooleanField(default=False)
+    offer_housing_detail = models.CharField(max_length=256, blank=True, null=True)
 
+    offer_food_checkbox = models.BooleanField(default=False)
+    offer_food_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    offer_stipend_checkbox = models.BooleanField(default=False)
+    offer_stipend_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    offer_studio_checkbox = models.BooleanField(default=False)
+    offer_studio_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    offer_tools_checkbox = models.BooleanField(default=False)
+    offer_tools_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    offer_additional_detail = models.TextField(blank=True, null=True)
+
+    require_language = models.CharField(max_length=256, blank=True, null=True)
+
+    require_start_date = models.DateField(blank=True, null=True, help_text="Earliest date the residency can start")
+    require_end_date = models.DateField(blank=True, null=True, help_text="Latest date the residency can end")
+    require_minimum_stay = models.CharField(max_length=256, blank=True, null=True, help_text="Minimum required length of stay")
+    require_maximum_stay = models.CharField(max_length=256, blank=True, null=True, help_text="Minimum required length of stay")
+    require_date_detail = models.TextField(blank=True, null=True)
+
+    require_mentoring_checkbox = models.BooleanField(default=False)
+    require_mentoring_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_talk_checkbox = models.BooleanField(default=False)
+    require_talk_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_workshop_checkbox = models.BooleanField(default=False)
+    require_workshop_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_presentation_checkbox = models.BooleanField(default=False)
+    require_presentation_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_class_checkbox = models.BooleanField(default=False)
+    require_class_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_hackathon_checkbox = models.BooleanField(default=False)
+    require_hackathon_detail = models.CharField(max_length=256, blank=True, null=True)
+
+    require_other_requirements = models.TextField(blank=True, null=True)
