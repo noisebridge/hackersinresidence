@@ -80,14 +80,15 @@ class OrganizationForm(forms.ModelForm):
     '''
     class Meta:
         model = Organization 
-        fields = ['title', 'slug', 'long_description', 'link_to_organization', 'location_city', 'location_country', 'organization_banner']
+        #fields = ['title', 'slug', 'long_description', 'link_to_organization', 'location_city', 'location_country', 'organization_banner']
+        fields = ['title', 'long_description', 'link_to_organization', 'location_city', 'location_country', 'organization_banner']
         widgets = {
                 'title': forms.TextInput(attrs={'class': 'form-control'}),
                 'long_description': forms.Textarea(attrs={'class': 'form-control'}),
                 'link_to_organization': forms.TextInput(attrs={'class': 'form-control'}),
                 'location_city': forms.TextInput(attrs={'class': 'form-control'}),
                 'location_country': forms.TextInput(attrs={'class': 'form-control'}),
-                'slug': forms.TextInput(attrs={'class': 'form-control'}),
+                #'slug': forms.TextInput(attrs={'class': 'form-control'}),
                 'organization_banner': forms.ClearableFileInput(),
                 }
         

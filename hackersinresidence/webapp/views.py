@@ -140,6 +140,8 @@ def create_opportunity(request):
             messages.success(request, 'Success! Opportunity submitted for review.')
             form.save()
 
+            return redirect('/opportunities/')
+
         # if POST and not valid, drop back to regular view
     
     # not POST
@@ -185,6 +187,8 @@ def update_organization(request):
         if form.is_valid():
             messages.success(request, 'Success! Organization submitted for review.')
             form.save()
+            # return to org page, not good to hardcode the url below?
+            return redirect('/org/{}/'.format(user_organization.slug))
 
         # if POST and not valid, drop back to regular view
     
@@ -203,7 +207,7 @@ def view_organization(request, org_slug=None):
         if request.user.is_authenticated:
             organization = Organization.objects.filter(user_owner=request.user).first()
             if organization:
-                # not good to hardcode this
+                # not good to hardcode the url below?
                 return redirect('/org/{}/'.format(organization.slug))
             else:
                 return redirect('update_organization')
