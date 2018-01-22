@@ -5,3 +5,4 @@ venv
 /static
 /hackersinresidence/media
 hackersinresidence/db.sqlite3
+hackersinresidence/hackersinresidence/settings.py
