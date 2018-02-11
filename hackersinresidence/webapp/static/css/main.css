@@ -11,7 +11,7 @@ nav.navbar {
   justify-content: flex-end;
   padding-right: 30px;
 }
-.header-donate-button {
+.header-donate-button { 
   margin: 0 20px;
   cursor: pointer;
 }
@@ -59,3 +59,15 @@ footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
 .org-banner {
   max-width: 100%;
 }
+
+/* ==========================================================================
+   Tools
+   ========================================================================== */
+/* uncomment to see rogue divs pushing margins to the right */
+/*
+* {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+}
+*/
