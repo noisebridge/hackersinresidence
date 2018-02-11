@@ -1,5 +1,7 @@
 ## Static Assets
 
+WARNING: DO NOT EDIT THE STATIC ASSETS IN /hackersinresidence/static. EDIT THE FILE AT /hackersinresidence/webapp/static and use django collectstatic to move them to the static files folder.
+
 The purpose of this static assets folder is to be hackable by a variety of contributors over a long period.
 
 Since we are not anticipating massive usership, we can afford to load multiple CSS files directly.
