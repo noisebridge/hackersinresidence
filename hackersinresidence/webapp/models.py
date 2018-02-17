@@ -70,6 +70,8 @@ class Opportunity(models.Model):
     title = models.CharField(max_length=256, blank=False, null=True)
     description = models.TextField(blank=True, null=True)
     expiration_date = models.DateField(blank=True, null=True) 
+    location_city = models.TextField(null=True)
+    location_country = models.TextField(null=True)
  
     ##############
     # below sections are pasted directly from Rich

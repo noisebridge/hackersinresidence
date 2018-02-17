@@ -25,6 +25,9 @@
   .second-content {
     padding: 30px 0;
   }
+  .header-link {
+    color: black !important;
+  }
 </style>
 {% endblock inlinecss %} 
 
@@ -42,19 +45,19 @@
 
   <div class="row view-opportunity-header">
     <div class="col-sm-3 text-left">
-      <h5>Opportunity</h5>
+      <a class="header-link" href="/opportunities/by_title/"><h5>Opportunity</h5></a>
     </div>
     <div class="col-sm-3 text-left">
-      <h5>Description</h5>
+      <a class="header-link" href="/opportunities/by_description/"><h5>Description</h5></a>
     </div>
     <div class="col-sm-2 text-left">
-      <h5>Organization</h5>
+      <a class="header-link" href="/opportunities/by_org"><h5>Organization</h5></a>
     </div>
     <div class="col-sm-2 text-left">
-      <h5>Location</h5>
+      <a class="header-link" href="/opportunities/by_location"><h5>Location</h5></a>
     </div>
     <div class="col-sm-2 text-left">
-      <h5>Expiration</h5>
+      <a class="header-link" href="/opportunities/by_expiration"><h5>Expiration</h5></a>
     </div>
   </div>
   {% for opportunity in opportunity_display_list %}

@@ -11,12 +11,15 @@ class OpportunityForm(forms.ModelForm):
     '''
     class Meta:
         model = Opportunity
-        fields = ['title', 'description', 'expiration_date', 'offer_travel_checkbox', 'offer_travel_detail', 'offer_housing_checkbox', 'offer_housing_detail', 'offer_food_checkbox', 'offer_food_detail', 'offer_stipend_checkbox', 'offer_stipend_detail', 'offer_studio_checkbox', 'offer_studio_detail', 'offer_tools_checkbox', 'offer_tools_detail', 'offer_additional_detail', 'require_language', 'require_start_date', 'require_end_date', 'require_minimum_stay', 'require_maximum_stay', 'require_date_detail', 'require_mentoring_checkbox', 'require_mentoring_detail', 'require_talk_checkbox', 'require_talk_detail', 'require_workshop_checkbox', 'require_workshop_detail', 'require_presentation_checkbox', 'require_presentation_detail', 'require_class_checkbox', 'require_class_detail', 'require_hackathon_checkbox', 'require_hackathon_detail', 'require_other_requirements']
+        fields = ['title', 'description', 'expiration_date', 'location_city', 'location_country', 'offer_travel_checkbox', 'offer_travel_detail', 'offer_housing_checkbox', 'offer_housing_detail', 'offer_food_checkbox', 'offer_food_detail', 'offer_stipend_checkbox', 'offer_stipend_detail', 'offer_studio_checkbox', 'offer_studio_detail', 'offer_tools_checkbox', 'offer_tools_detail', 'offer_additional_detail', 'require_language', 'require_start_date', 'require_end_date', 'require_minimum_stay', 'require_maximum_stay', 'require_date_detail', 'require_mentoring_checkbox', 'require_mentoring_detail', 'require_talk_checkbox', 'require_talk_detail', 'require_workshop_checkbox', 'require_workshop_detail', 'require_presentation_checkbox', 'require_presentation_detail', 'require_class_checkbox', 'require_class_detail', 'require_hackathon_checkbox', 'require_hackathon_detail', 'require_other_requirements']
 
         widgets = {
                 'title': forms.TextInput(attrs={'class': 'form-control'}),
                 'description': forms.Textarea(attrs={'class': 'form-control'}),
                 'expiration_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+
+                'location_city': forms.TextInput(attrs={'class': 'form-control'}),
+                'location_country': forms.TextInput(attrs={'class': 'form-control'}),
 
                 'application_instructions': forms.TextInput(attrs={'class': 'form-control'}),
     

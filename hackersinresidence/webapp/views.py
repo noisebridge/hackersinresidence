@@ -11,6 +11,8 @@ from .forms import OpportunityForm, OrganizationForm
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
+import datetime
+
 def view_404(request):
     ''' 404 page
     '''
@@ -53,7 +55,7 @@ def lipsum(request):
     return render(request, 'pages/lipsum.html')
 
 
-def opportunities(request):
+def opportunities(request, opportunity_order=''):
     ''' View list of opportunities
 
     Two functions:
@@ -63,10 +65,28 @@ def opportunities(request):
         - when the user logs in they should be redirected to this page
         - there should be a login link on the homepage
     '''
+    # i can sort the queryset here somehow, by checking what the opportunity suffix will be
     opportunities = Opportunity.objects.all()
+
+    # sort by url-specified order hackersinresidence.org/opportunities/by_description
+    if opportunity_order == 'by_expiration':
+        opportunities = opportunities.order_by('expiration_date')
+    elif opportunity_order == 'by_title':
+        opportunities = opportunities.order_by('title')
+    elif opportunity_order == 'by_description':
+        opportunities = opportunities.order_by('description')
+    elif opportunity_order == 'by_org':
+        # i think this does a sort by index, not alphabetical. oh well, it's not javascript
+        opportunities = opportunities.order_by('org_owner')
+    elif opportunity_order == 'by_location':
+        # location should probably be by opportunity, since an organization may have more than one location
+        opportunities = opportunities.order_by('location_city', 'location_country')
 
     opportunity_display_list = list()
     for opportunity in opportunities:
+        # skip expired, don't skip missing
+        if opportunity.expiration_date and opportunity.expiration_date < datetime.date.today():
+            continue
         opportunity_link = "/opportunity/{}".format(opportunity.id)
         org = opportunity.org_owner
         org_title = org.title
