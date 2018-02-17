@@ -1,36 +1,38 @@
-<div class="row">
-  <div class="col-sm-12">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
 
-    {% if messages %}
-      {% for message in messages %}
-        {% if "Internet Explorer" in message %}
-          <div class="alert alert-danger" role="alert">{{ message }}</div>
-        {%else%}
-          <div class="alert alert-info" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          {{ message }}
-          </div>
-          {# {{ message }} #}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-    
-    {% comment %}
-
-      {# this works but should use bootstrap flash message #}
       {% if messages %}
-      <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-          {{ message }}
-        </li>
+          {% if "Internet Explorer" in message %}
+            <div class="alert alert-danger" role="alert">{{ message }}</div>
+          {%else%}
+            <div class="alert alert-info" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+            </div>
+            {# {{ message }} #}
+          {% endif %}
         {% endfor %}
-      </ul>
       {% endif %}
+      
+      {% comment %}
 
-    {% endcomment %}
+        {# this works but should use bootstrap flash message #}
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {{ message }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
 
+      {% endcomment %}
+
+    </div>
   </div>
 </div>

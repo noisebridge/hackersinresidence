@@ -28,9 +28,11 @@
     {% endblock header %}
 
     {# the 'main' block is the primary place to display content #}
+    <div class="hir-main">
     {% block main %}
       {# some default content could go here #}
     {% endblock main %}
+    </div>
 
     {% block footer %}
       {% include "sections/footer.html" %}

@@ -37,6 +37,17 @@ footer a, footer a:link, footer a:hover, footer a:active, footer a:visited {
   margin-top: -2px;
 }
 
+/* body defaults */
+body {
+  margin-top: -1px; /* bootstrap 4 schenanigans */
+  background-color: #222;
+}
+.hir-main {
+  min-height: 800px;
+  background-color: white;
+
+}
+
 
 /* default.html default template section */
 
