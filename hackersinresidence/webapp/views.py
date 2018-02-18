@@ -69,7 +69,7 @@ def opportunities(request, opportunity_order=''):
         - there should be a login link on the homepage
     '''
     # i can sort the queryset here somehow, by checking what the opportunity suffix will be
-    opportunities = Opportunity.objects.all()
+    opportunities = Opportunity.objects.filter(moderator_approved=True).all()
 
     # sort by url-specified order hackersinresidence.org/opportunities/by_description
     # it would be cool, and possible, to allow the sort to be reversed if the user is already on the same page,
@@ -115,7 +115,8 @@ def view_opportunity(request, opportunity_id):
     I think I have written some stuff on managing opportunity state in the past
     Look this stuff up, states like: under_review, approved, expired, spam
     '''
-    opportunity = Opportunity.objects.get(pk=opportunity_id)
+    # require the opportunity to be approved to be seen
+    opportunity = Opportunity.objects.filter(moderator_approved=True).get(pk=opportunity_id)
     organization = opportunity.org_owner
 
     # will need to pass the opportunity in to be filled in the template

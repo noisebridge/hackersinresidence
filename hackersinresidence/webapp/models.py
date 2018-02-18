@@ -36,7 +36,7 @@ class Organization(models.Model):
         if not self.moderator_approved:
             return admin_view.format('UNAPPROVED =>', self.title)
         else:
-            return admin_view.format(self.title)
+            return admin_view.format('', self.title)
     
     # make a relationship on user per organization, allow user to have mult orgs in model
     # but do not code feature into ux components - leave possibility open
