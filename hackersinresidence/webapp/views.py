@@ -162,7 +162,11 @@ def create_opportunity(request):
         form = OpportunityForm(request.POST, instance=opportunity)
         if form.is_valid():
             messages.success(request, 'Success! Your opportunity will be reviewed within 1-2 days by site moderators. Please check back regularly.')
-            form.save()
+            # take the long way around in order to manually tweak the moderator_approved value to False
+            #form.save()
+            result = form.save(commit=False)
+            result.moderator_approved = False
+            result.save()
 
             mail_subject = 'HIR: Opportunity Review Ready'
             mail_message = 'Hi HIR Admins, \n\n A new HIR Opportunity is ready to be reviewed in the admin area.'
@@ -215,7 +219,11 @@ def update_organization(request):
         form = OrganizationForm(request.POST, request.FILES, instance=user_organization)
         if form.is_valid():
             messages.success(request, 'Success! Your organization will be reviewed within 1-2 days by site moderators. Please check back regularly.')
-            form.save()
+            # take the long way around in order to manually tweak the moderator_approved value to False
+            #form.save()
+            result = form.save(commit=False)
+            result.moderator_approved = False
+            result.save()
 
             mail_subject = 'HIR: Organization Review Ready'
             mail_message = 'Hi HIR Admins, \n\n A HIR Organization is ready to be reviewed in the admin area.'

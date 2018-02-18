@@ -31,11 +31,18 @@ class Organization(models.Model):
     What other fields would an organization want to define themselves with?
 
     '''
+    def __str__(self):
+        admin_view = '{} {}'
+        if not self.moderator_approved:
+            return admin_view.format('UNAPPROVED =>', self.title)
+        else:
+            return admin_view.format(self.title)
+    
     # make a relationship on user per organization, allow user to have mult orgs in model
     # but do not code feature into ux components - leave possibility open
     # this cascades by default, but I put it so it is explicit
     user_owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-
+    moderator_approved = models.BooleanField(default=False)
     title = models.CharField(max_length=256, blank=False, null=True)
     long_description = models.TextField(null=True)
     link_to_organization = models.TextField(null=True)
@@ -59,6 +66,13 @@ class Opportunity(models.Model):
         - expiration date
         - organization
     '''
+    def __str__(self):
+        admin_view = '{} {}'
+        if not self.moderator_approved:
+            return admin_view.format('UNAPPROVED =>', self.title)
+        else:
+            return admin_view.format('', self.title)
+
     class Meta:
         verbose_name_plural = 'Opportunities'
 
@@ -67,11 +81,12 @@ class Opportunity(models.Model):
 
     # this cascades by default, but I put it so it is explicit
     org_owner = models.ForeignKey(Organization, on_delete=models.CASCADE, null=True)
+    moderator_approved = models.BooleanField(default=False)
     title = models.CharField(max_length=256, blank=False, null=True)
     description = models.TextField(blank=True, null=True)
     expiration_date = models.DateField(blank=True, null=True) 
-    location_city = models.TextField(null=True)
-    location_country = models.TextField(null=True)
+    location_city = models.TextField(blank=True, null=True)
+    location_country = models.TextField(blank=True, null=True)
  
     ##############
     # below sections are pasted directly from Rich
