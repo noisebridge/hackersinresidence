@@ -2,8 +2,6 @@ from django import forms
 
 from .models import Opportunity, Organization
 
-#from django.utils.text import slugify
-
 class OpportunityForm(forms.ModelForm):
     ''' Django form describing the Opportunity model
 

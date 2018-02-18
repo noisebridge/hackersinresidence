@@ -9,6 +9,8 @@ from django.contrib import messages
 from .models import Opportunity, Organization
 from .forms import OpportunityForm, OrganizationForm
 
+from django.utils.text import slugify
+
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from django.core.mail import send_mail
@@ -211,6 +213,23 @@ def update_organization(request):
     - Ideally this can be recycled to create an organization, but currently a single account manages a single organization.
     '''
 
+    def make_slug(title):
+        ''' make a slug out of a title
+        '''
+        slug_prefix = slugify(title)
+        slug_attempt = slug_prefix
+
+        # give increasing values of the form slug-1, slug-2 forever until we get a good slug
+        nonunique = 1
+        while True:
+            if Organization.objects.filter(slug=slug_attempt).exists():
+                slug_attempt = '{}-{}'.format(slug_prefix, nonunique)
+                nonunique += 1
+            else:
+                # got a slug
+                return slug_attempt
+
+
     # copied/updated from opportunity - make sure to grab the model for the org
     # from the user's organization
     if request.method == 'POST':
@@ -220,10 +239,14 @@ def update_organization(request):
         form = OrganizationForm(request.POST, request.FILES, instance=user_organization)
         if form.is_valid():
             messages.success(request, 'Success! Your organization will be reviewed within 1-2 days by site moderators. Please check back regularly.')
+            # no more form.save(), instead we modify the form as result, then save it
             # take the long way around in order to manually tweak the moderator_approved value to False
-            #form.save()
             result = form.save(commit=False)
+            # make a slug if the org doesn't have one, otherwise you have a really annoying state for moderators to figure out
+            if not result.slug:
+                result.slug = make_slug(result.title)
             # only flag for approval when the org is new
+            # this probably never triggers, instead relying on the model's default=False
             if created:
                 result.moderator_approved = False
             result.save()
