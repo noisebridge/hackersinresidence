@@ -47,6 +47,7 @@ class Organization(models.Model):
     long_description = models.TextField(null=True)
     link_to_organization = models.TextField(null=True)
     location_city = models.TextField(null=True)
+    location_state = models.TextField(blank=True, null=True)
     location_country = models.TextField(null=True)
     slug = models.SlugField(default=None, unique=True, allow_unicode=True, null=True)
     # see user_directory_path function above, upload_to calls this with (instance, filename)
