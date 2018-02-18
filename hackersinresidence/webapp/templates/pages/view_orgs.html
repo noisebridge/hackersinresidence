@@ -1,0 +1,83 @@
+{# from: default content page #}
+{# great for styling a simple section of content #}
+{% extends "default-content.html" %}
+{% load staticfiles %}
+
+{% block inlinecss %}
+<style type="text/css">
+  .view-opportunity-header {
+    padding: 0 0 10px 0;
+    text-align: center;
+  }
+  .view-opportunity {
+    padding: 0 0 30px 0;
+    text-align: center;
+  }
+  .view-opportunity h5 {
+    text-decoration: underline;  
+  }
+  .view-opportunity-header h5 {
+    text-decoration: underline;  
+  }
+  .first-content {
+    padding: 30px 0;
+  }
+  .second-content {
+    padding: 30px 0;
+  }
+  .header-link {
+    color: black !important;
+  }
+</style>
+{% endblock inlinecss %} 
+
+{% block title %}Opportunities{% endblock title %}
+
+{# this exists within the bootstrap grid as "offset-sm-2 col-sm-8" #}
+{% block defaultpage %}
+
+  <div class="row first-content">
+    <div class="col-sm-12">
+      <p>
+    </div>
+  </div>
+
+  <div class="row view-opportunity-header">
+    <div class="col-sm-3 text-left">
+      <h5>Organization</h5>
+    </div>
+    <div class="col-sm-3 text-left">
+      <h5>Location</h5>
+    </div>
+    <div class="col-sm-2 text-left">
+      <h5>Description</h5>
+      <a class="header-link" href="/opportunities/by_org"><h5></h5></a>
+    </div>
+    <div class="col-sm-2 text-left">
+      <h5>Website</h5>
+    </div>
+    <div class="col-sm-2 text-left">
+      <h5></h5>
+    </div>
+  </div>
+  {% for organization in organizations %}
+  <div class="row view-opportunity">
+    <div class="col-sm-3 text-left">
+      {{ organization.title }}
+    </div>
+    <div class="col-sm-3 text-left">
+      {{ organization.location_city }}, {{ organization.location_country }}
+    </div>
+    <div class="col-sm-2 text-left">
+      {{ organization.description }}
+    </div>
+    <div class="col-sm-2 text-left">
+      <a href="{{ organization.link_to_organization }}">{{ organization.link_to_organization }}</a>
+    </div>
+    <div class="col-sm-2 text-left">
+    </div>
+  </div>
+  {% endfor %}
+
+
+{% endblock defaultpage %}

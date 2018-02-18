@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^opportunities/$', views.opportunities, name='opportunities'),
+    url(r'^orgs/$', views.view_organizations, name='organizations'),
     # ?P regex extension available in re docs: https://docs.python.org/2/library/re.html
     url(r'^opportunity/(?P<opportunity_id>[0-9]+)/$', views.view_opportunity, name='view_opportunity'),
     url(r'^opportunities/(?P<opportunity_order>.+)/$', views.opportunities, name='opportunities'),

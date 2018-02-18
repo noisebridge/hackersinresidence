@@ -296,3 +296,12 @@ def view_organization(request, org_slug=None):
         return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })
     else:
         raise Http404
+
+def view_organizations(request):
+    ''' view all the organizations
+    '''
+    organizations = Organization.objects.filter(moderator_approved=True).all()
+
+    return render(request, 'pages/view_orgs.html', {'organizations': organizations})
+
+
