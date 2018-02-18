@@ -214,9 +214,15 @@ def update_organization(request):
         user_organization, created = Organization.objects.get_or_create(user_owner=request.user)
         form = OrganizationForm(request.POST, request.FILES, instance=user_organization)
         if form.is_valid():
-            messages.success(request, 'Success! Organization submitted for review.')
+            messages.success(request, 'Success! Your organization will be reviewed within 1-2 days by site moderators. Please check back regularly.')
             form.save()
+
+            mail_subject = 'HIR: Organization Review Ready'
+            mail_message = 'Hi HIR Admins, \n\n A HIR Organization is ready to be reviewed in the admin area.'
+            send_mail(mail_subject, mail_message, settings.EMAIL_HOST_USER, settings.ADMINS)
+
             # return to org page, not good to hardcode the url below?
+            # this could just be /org/, because /org/ redirects to your org if you are logged in
             return redirect('/org/{}/'.format(user_organization.slug))
 
         # if POST and not valid, drop back to regular view
@@ -237,6 +243,7 @@ def view_organization(request, org_slug=None):
             organization = Organization.objects.filter(user_owner=request.user).first()
             if organization:
                 # not good to hardcode the url below?
+                # this could just be /org/, because /org/ redirects to your org if you are logged in
                 return redirect('/org/{}/'.format(organization.slug))
             else:
                 return redirect('update_organization')
