@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 
 from django.contrib import messages
 
@@ -222,7 +222,9 @@ def update_organization(request):
             # take the long way around in order to manually tweak the moderator_approved value to False
             #form.save()
             result = form.save(commit=False)
-            result.moderator_approved = False
+            # only flag for approval when the org is new
+            if created:
+                result.moderator_approved = False
             result.save()
 
             mail_subject = 'HIR: Organization Review Ready'
@@ -266,4 +268,7 @@ def view_organization(request, org_slug=None):
     # used to determine whether to show the edit org button in the template
     user_owner = organization.user_owner
 
-    return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })
+    if organization.moderator_approved:
+        return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })
+    else:
+        raise Http404
