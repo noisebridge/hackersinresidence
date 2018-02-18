@@ -7,8 +7,7 @@
 
 {% block inlinecss %}
 <style type="text/css">
-  button {
-    cursor: pointer;
+  button { cursor: pointer;
   }
   .org-top-container {
     padding-top: 30px;
@@ -36,7 +35,9 @@
   <div class="row org-top-container">
     <div class="col-md-5">
       <h3>{{ organization.title }}</h3>
-      <h5>{{ organization.location_city }}, {{ organization.location_country }}</h5>
+      <br />
+      <h5>{{ organization.location_country }}</h5>
+      <h6>{{ organization.location_city }}, {{ organization.location_state }}</h6>
       <br>
       {{ organization.long_description | linebreaks }}
     </div>
