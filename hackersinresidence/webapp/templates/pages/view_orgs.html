@@ -63,7 +63,7 @@
   {% for organization in organizations %}
   <div class="row view-opportunity">
     <div class="col-sm-3 text-left">
-      {{ organization.title }}
+      <a href="/org/{{ organization.slug }}/">{{ organization.title }}</a>
     </div>
     <div class="col-sm-3 text-left">
       {{ organization.location_city }}, {{ organization.location_country }}
@@ -72,7 +72,7 @@
       {{ organization.description }}
     </div>
     <div class="col-sm-2 text-left">
-      <a href="{{ organization.link_to_organization }}">{{ organization.link_to_organization }}</a>
+      {{ organization.link_to_organization }}
     </div>
     <div class="col-sm-2 text-left">
     </div>

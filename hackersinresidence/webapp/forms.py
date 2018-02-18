@@ -71,9 +71,9 @@ class OpportunityForm(forms.ModelForm):
                 }
         # use regex to copy the dict keys above and add manual titles
         labels = {
-                    'title': ('Create a new Residency Opportunity'),
-                    'description': ('Title of this Opportunity'),
-                    'expiration_date': ('Describe this Residency Opportunity'),
+                    'title': ('Title of this Opportunity'),
+                    'description': ('Describe this Residency Opportunity'),
+                    'expiration_date': ('Date this opportunity expires'),
                     'location_city': ('City of the Residency Opportunity'),
                     'location_country': ('Country of the Residency Opportunity'),
                     'offer_travel_checkbox': ('Check this box if you offer travel expenses'),
