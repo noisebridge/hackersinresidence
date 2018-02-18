@@ -249,12 +249,12 @@ def view_organization(request, org_slug=None):
     ''' View an organization's information
     '''
     # should also pull the user from the url if present in the url
+    # check if we were even given a slug to check from
     if not org_slug:
         if request.user.is_authenticated:
             organization = Organization.objects.filter(user_owner=request.user).first()
-            if organization:
+            if organization and organization.slug:
                 # not good to hardcode the url below?
-                # this could just be /org/, because /org/ redirects to your org if you are logged in
                 return redirect('/org/{}/'.format(organization.slug))
             else:
                 return redirect('update_organization')
@@ -269,7 +269,7 @@ def view_organization(request, org_slug=None):
     # used to determine whether to show the edit org button in the template
     user_owner = organization.user_owner
 
-    if organization.moderator_approved:
+    if organization.moderator_approved or organization.user_owner == request.user:
         return render(request, 'pages/view_organization.html', { 'organization' : organization, 'user_owner' : user_owner })
     else:
         raise Http404
