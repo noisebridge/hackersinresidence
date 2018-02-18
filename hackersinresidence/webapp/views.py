@@ -11,6 +11,9 @@ from .forms import OpportunityForm, OrganizationForm
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 
+from django.core.mail import send_mail
+from django.conf import settings
+
 import datetime
 
 def view_404(request):
@@ -69,6 +72,8 @@ def opportunities(request, opportunity_order=''):
     opportunities = Opportunity.objects.all()
 
     # sort by url-specified order hackersinresidence.org/opportunities/by_description
+    # it would be cool, and possible, to allow the sort to be reversed if the user is already on the same page,
+    # so that if you are already on by_title, then clicking the "Opportunity" header would reverse the sort...
     if opportunity_order == 'by_expiration':
         opportunities = opportunities.order_by('expiration_date')
     elif opportunity_order == 'by_title':
@@ -79,7 +84,6 @@ def opportunities(request, opportunity_order=''):
         # i think this does a sort by index, not alphabetical. oh well, it's not javascript
         opportunities = opportunities.order_by('org_owner')
     elif opportunity_order == 'by_location':
-        # location should probably be by opportunity, since an organization may have more than one location
         opportunities = opportunities.order_by('location_city', 'location_country')
 
     opportunity_display_list = list()
@@ -157,10 +161,15 @@ def create_opportunity(request):
 
         form = OpportunityForm(request.POST, instance=opportunity)
         if form.is_valid():
-            messages.success(request, 'Success! Opportunity submitted for review.')
+            messages.success(request, 'Success! Your opportunity will be reviewed within 1-2 days by site moderators. Please check back regularly.')
             form.save()
 
-            return redirect('/opportunities/')
+            mail_subject = 'HIR: Opportunity Review Ready'
+            mail_message = 'Hi HIR Admins, \n\n A new HIR Opportunity is ready to be reviewed in the admin area.'
+            send_mail(mail_subject, mail_message, settings.EMAIL_HOST_USER, settings.ADMINS)
+
+            # org redirects to the user's org by default (if logged in, which must be the case here)
+            return redirect('/org/')
 
         # if POST and not valid, drop back to regular view
     
