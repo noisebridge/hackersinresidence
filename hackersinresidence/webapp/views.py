@@ -60,6 +60,33 @@ def lipsum(request):
     return render(request, 'pages/lipsum.html')
 
 
+def delete_owned_opportunity(request, opportunity_id):
+    ''' if you own an opportunity, this view will delete it
+    '''
+    opportunity = Opportunity.objects.get(pk=opportunity_id)
+
+    # if the opportunity doesn't exist, 
+    if not opportunity:
+        messages.error(request, 'There was no opportunity with that ID, please try again or contact our admin team using the link in the footer.')
+        return redirect('/opportunities/')
+
+    # use the org to validate the user can do this
+    organization = opportunity.org_owner
+
+    # delete the opportunity
+    if opportunity.org_owner == request.user:
+        opportunity.delete()
+        messages.success(request, 'Success! Your opportunity will be reviewed within 1-2 days by site moderators. Please check back regularly.')
+        return redirect('/opportunities/')
+    else:
+        messages.error(request, 'This opportunity belongs to another user.')
+        return redirect('/opportunities/')
+
+
+    messages.error(request, 'Something went wrong, please contact site admins if it happens again.')
+    return redirect('/opportunities/')
+
+
 def opportunities(request, opportunity_order=''):
     ''' View list of opportunities
 
