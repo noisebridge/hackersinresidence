@@ -74,9 +74,9 @@ def delete_owned_opportunity(request, opportunity_id):
     organization = opportunity.org_owner
 
     # delete the opportunity
-    if opportunity.org_owner == request.user:
+    if organization.user_owner == request.user:
         opportunity.delete()
-        messages.success(request, 'Success! Your opportunity will be reviewed within 1-2 days by site moderators. Please check back regularly.')
+        messages.success(request, 'Success! Your opportunity was deleted.')
         return redirect('/opportunities/')
     else:
         messages.error(request, 'This opportunity belongs to another user.')
