@@ -123,11 +123,13 @@ def opportunities(request, opportunity_order=''):
         opportunity_link = "/opportunity/{}".format(opportunity.id)
         org = opportunity.org_owner
         org_title = org.title
+        org_user_owner_id = org.user_owner.id
         org_location = '{city} {country}'.format(city=org.location_city, country=org.location_country)
-        opportunity_display = { 'title' : opportunity.title, 'description' : opportunity.description, 'org_title' : org_title, 'org_location' : org_location, 'expiration' : opportunity.expiration_date, 'link': opportunity_link }
+        # this could be done differently...
+        opportunity_display = { 'id': opportunity.id, 'title' : opportunity.title, 'description' : opportunity.description, 'org_title' : org_title, 'org_location' : org_location, 'expiration' : opportunity.expiration_date, 'link': opportunity_link, 'org_user_owner_id': org_user_owner_id}
         opportunity_display_list.append(opportunity_display)
 
-    return render(request, 'pages/opportunities.html', {'opportunity_display_list': opportunity_display_list })
+    return render(request, 'pages/opportunities.html', {'opportunity_display_list': opportunity_display_list})
 
 
 def view_opportunity(request, opportunity_id):

@@ -47,9 +47,6 @@
       <a class="header-link" href="/opportunities/by_title/"><h5>Opportunity</h5></a>
     </div>
     <div class="col-sm-3 text-left">
-      <a class="header-link" href="/opportunities/by_description/"><h5>Description</h5></a>
-    </div>
-    <div class="col-sm-2 text-left">
       <a class="header-link" href="/opportunities/by_org"><h5>Organization</h5></a>
     </div>
     <div class="col-sm-2 text-left">
@@ -58,6 +55,9 @@
     <div class="col-sm-2 text-left">
       <a class="header-link" href="/opportunities/by_expiration"><h5>Expiration</h5></a>
     </div>
+    <div class="col-sm-1 text-left">
+      <a class="header-link" href="/opportunities/by_description/"><h5>Delete?</h5></a>
+    </div>
   </div>
   {% for opportunity in opportunity_display_list %}
   <div class="row view-opportunity">
@@ -65,9 +65,6 @@
       <a href="{{ opportunity.link }}">{{ opportunity.title }}</a>
     </div>
     <div class="col-sm-3 text-left">
-      {{ opportunity.description }}
-    </div>
-    <div class="col-sm-2 text-left">
       {{ opportunity.org_title }}
     </div>
     <div class="col-sm-2 text-left">
@@ -75,6 +72,11 @@
     </div>
     <div class="col-sm-2 text-left">
       {{ opportunity.expiration }}
+    </div>
+    <div class="col-sm-1 text-left">
+      {% if request.user.id == opportunity.org_user_owner_id %}
+        <a href='/opportunity/delete/{{ opportunity.id }}'>delete</a>
+      {% endif %}
     </div>
   </div>
   {% endfor %}
