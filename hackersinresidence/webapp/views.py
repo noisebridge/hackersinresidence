@@ -150,6 +150,10 @@ def view_opportunity(request, opportunity_id):
     opportunity = Opportunity.objects.filter(moderator_approved=True).get(pk=opportunity_id)
     organization = opportunity.org_owner
 
+    # keep it simple for now
+    if not opportunity:
+        raise Http404
+
     # will need to pass the opportunity in to be filled in the template
     return render(request, 'pages/view_opportunity.html', {'opportunity': opportunity, 'organization': organization})
 
