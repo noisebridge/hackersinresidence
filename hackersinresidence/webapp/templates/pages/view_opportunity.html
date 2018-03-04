@@ -25,6 +25,9 @@
   .second-content {
     padding: 30px 0;
   }
+  .opportunity-info {
+    font-weight: bold;
+  }
 </style>
 {% endblock inlinecss %} 
 
@@ -38,8 +41,76 @@
       <h5>{{ opportunity.title }}</h5>
       <p>{{ opportunity.description | linebreaks }}
       <p>Organized by: {{ organization.title }}
-      <p>Organization location: {{ organization.location_city }}, {{ organization.location_country }}
+      <p>Organization location: {{ organization.location_city }}, {{ organization.location_state }}, {{ organization.location_country }}
       <p>Expires: {{ opportunity.expiration_date }}
+    </div>
+    <div class="col-sm-12">
+      <p>
+        <p>Check this box if you offer travel expenses: 
+        <span class="opportunity-info">{{ opportunity.offer_travel_checkbox }}</span>
+        <p>Offer Travel Detail: 
+        <p><span class="opportunity-info">{{ opportunity.offer_travel_detail }}</span>
+        <p>Check this box if you offer housing: 
+        <span class="opportunity-info">{{ opportunity.offer_housing_checkbox }}</span>
+        <p>Give details of housing offered: 
+        <p><span class="opportunity-info">{{ opportunity.offer_housing_detail }}</span>
+        <p>Check this box if you offer food: 
+        <span class="opportunity-info">{{ opportunity.offer_food_checkbox }}</span>
+        <p>Give details of food offered: 
+        <p><span class="opportunity-info">{{ opportunity.offer_food_detail }}</span>
+        <p>Check this box if you offer a stipend: 
+        <span class="opportunity-info">{{ opportunity.offer_stipend_checkbox }}</span>
+        <p>Give details of stipend offered: 
+        <p><span class="opportunity-info">{{ opportunity.offer_stipend_detail }}</span>
+        <p>Check this box if you offer studio space: 
+        <span class="opportunity-info">{{ opportunity.offer_studio_checkbox }}</span>
+        <p>Give details of studio space offered: 
+        <p><span class="opportunity-info">{{ opportunity.offer_studio_detail }}</span>
+        <p>Check this box if you offer use of tools: 
+        <span class="opportunity-info">{{ opportunity.offer_tools_checkbox }}</span>
+        <p>Give details of tools offered: 
+        <p><span class="opportunity-info">{{ opportunity.offer_tools_detail }}</span>
+        <p>If there is anything else you offer for this Residency, describe it here: 
+        <p><span class="opportunity-info">{{ opportunity.offer_additional_detail }}</span>
+        <p>List languages and skill levels required: 
+        <span class="opportunity-info">{{ opportunity.require_language }}</span>
+        <p>Earliest start date of this Residency Opportunity: 
+        <span class="opportunity-info">{{ opportunity.require_start_date }}</span>
+        <p>Latest end date of this Residency Opportunity: 
+        <span class="opportunity-info">{{ opportunity.require_end_date }}</span>
+        <p>Minimum time required for this Residency: 
+        <span class="opportunity-info">{{ opportunity.require_minimum_stay }}</span>
+        <p>Maximum time of stay for this Residency: 
+        <span class="opportunity-info">{{ opportunity.require_maximum_stay }}</span>
+        <p>If needed, give details about the length of stay: 
+        <p><span class="opportunity-info">{{ opportunity.require_date_detail }}</span>
+        <p>Check this box if the resident is required to act as a mentor for members of your community: 
+        <span class="opportunity-info">{{ opportunity.require_mentoring_checkbox }}</span>
+        <p>Give details about mentoring required: 
+        <p><span class="opportunity-info">{{ opportunity.require_mentoring_detail }}</span>
+        <p>Check this box if the resident is required to give a talk: 
+        <span class="opportunity-info">{{ opportunity.require_talk_checkbox }}</span>
+        <p>Give details about talk(s) the Resident is required to give: 
+        <p><span class="opportunity-info">{{ opportunity.require_talk_detail }}</span>
+        <p>Check this box if the resident is required to give a workshop: 
+        <span class="opportunity-info">{{ opportunity.require_workshop_checkbox }}</span>
+        <p>Give details about workshop(s) the Resident is required to give: 
+        <p><span class="opportunity-info">{{ opportunity.require_workshop_detail }}</span>
+        <p>Check this box if the Resident is required to give a presentation: 
+        <span class="opportunity-info">{{ opportunity.require_presentation_checkbox }}</span>
+        <p>Give details about presentation(s) the Resident is required to give: 
+        <p><span class="opportunity-info">{{ opportunity.require_presentation_detail }}</span>
+        <p>Check this box if the Resident is required to give a class: 
+        <span class="opportunity-info">{{ opportunity.require_class_checkbox }}</span>
+        <p>Give details about class(es) the Resident is required to give: 
+        <p><span class="opportunity-info">{{ opportunity.require_class_detail }}</span>
+        <p>Check this box if the Resident is required to organize a hackathon: 
+        <span class="opportunity-info">{{ opportunity.require_hackathon_checkbox }}</span>
+        <p>Give details about hackathon(s) the Resident is required to give: 
+        <p><span class="opportunity-info">{{ opportunity.require_hackathon_detail }}</span>
+        <p>If there is anything else you require for this Residency, describe it here: 
+        <span class="opportunity-info">{{ opportunity.require_other_requirements }}</span>
+      
     </div>
   </div>
 
